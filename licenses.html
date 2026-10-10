@@ -1,0 +1,11 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0c0f11"><link rel="stylesheet" href="style.css"><title>Stemlight · ライセンス</title></head><body><main class="app" style="padding-bottom:40px"><header class="top"><a href="./" class="brand">← Stemlight</a></header><h1>ライセンス</h1>
+<span class="label">配信しているモデル</span>
+<div class="card"><h2>KUIELab MDX-Net</h2><p class="sub">Woosung Choi / KUIELab · AIcrowd — MIT（コードと事前学習済みモデル）。作者リポジトリの固定コミットから端末へ直接取得します。入出力のtime次元のみ32/64/128へ変更（重み・演算は無変更）。</p><p class="sub"><a href="https://github.com/kuielab/mdx-net-submission" rel="noreferrer">kuielab/mdx-net-submission</a></p></div>
+<div class="card"><h2>SCNet Base</h2><p class="sub">Copyright (c) 2024 starrytong — MIT。作者が重みのMIT適用とONNX変換・再配布を明示的に許可。公式Base checkpointから64/128フレームONNXへ変換（内部FFTを行列化、学習済みパラメータは保持）。</p><p class="sub"><a href="https://github.com/starrytong/SCNet" rel="noreferrer">starrytong/SCNet</a> · <a href="https://github.com/starrytong/SCNet/issues/35#issuecomment-4999873539" rel="noreferrer">作者の許諾</a></p></div>
+<span class="label">ユーザーが追加するモデル（配信していません）</span>
+<div class="card"><h2>UVR MDX-Net Inst HQ 5 / Karaoke 2</h2><p class="sub">Ultimate Vocal Remover · Anjok07 / aufr33。重み個別の再配布条件が未確認のため、利用者が所有するファイルを端末で追加します（SHA-256照合）。</p></div>
+<div class="card"><h2>HTDemucs / HTDemucs 6</h2><p class="sub">Meta (Alexandre Défossez) — コードはMIT。作者は重みについて「MITの対象外、科学目的での提供」と説明しています。利用者の公式checkpointから手元で変換したパックを追加して使います。</p><p class="sub"><a href="https://github.com/facebookresearch/demucs" rel="noreferrer">facebookresearch/demucs</a> · <a href="https://github.com/facebookresearch/demucs/issues/327" rel="noreferrer">重みの扱い (#327)</a></p></div>
+<div class="card"><h2>BS-RoFormer SW</h2><p class="sub">重みの再配布条件が未確認。利用者のファイルを追加して使います。</p></div>
+<span class="label">ソフトウェア</span>
+<div class="card"><p class="sub">ONNX Runtime Web 1.30.0 (Microsoft, MIT) · FFT.js 4.0.4 (Fedor Indutny, MIT) · fflate 0.8.2 (Arjun Barrett, MIT) · Demucs (Meta, MIT: HTDemucsのSTFT/分割処理の移植)。WASM共有メモリの最大予約を1GBに制限（公式WASMバイナリは無改変）。全文: <a href="THIRD_PARTY_NOTICES.txt">THIRD_PARTY_NOTICES.txt</a></p></div>
+<p class="sub" style="margin-top:20px">音源は端末から送信されません。UIの操作フロー調査にMVSEPのAPKを参照しましたが、コード・画像・フォント・名称は使用していません。</p></main></body></html>

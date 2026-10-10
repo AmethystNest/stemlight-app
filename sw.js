@@ -1,0 +1,9 @@
+const CACHE="stemlight-9a2b5a3e8159";const ASSETS=["./","index.html","app.js","engine-worker.js","export-worker.js","style.css","manifest.webmanifest","icons/icon.svg","icons/icon-192.png","icons/icon-512.png","licenses.html","THIRD_PARTY_NOTICES.txt","diagnostics.html","diagnostics.js","runtime/ort-wasm-simd-threaded.mjs","runtime/ort-wasm-simd-threaded.wasm"];const SCOPE=new URL('./',self.location).href;
+function isolate(r){if(!r||r.type==='opaque'||r.status===0)return r;const h=new Headers(r.headers);h.set('Cross-Origin-Opener-Policy','same-origin');h.set('Cross-Origin-Embedder-Policy','require-corp');h.set('Cross-Origin-Resource-Policy','same-origin');return new Response(r.body,{status:r.status,statusText:r.statusText,headers:h});}
+self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS))));
+self.addEventListener('activate',e=>e.waitUntil((async()=>{for(const k of await caches.keys())if(k.startsWith('stemlight-')&&k!==CACHE)await caches.delete(k);await self.clients.claim();})()));
+self.addEventListener('message',e=>{if(e.data?.type==='ACTIVATE')self.skipWaiting();});
+self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;const u=new URL(e.request.url);if(u.origin!==self.location.origin||!u.href.startsWith(SCOPE))return;const rel=u.href.slice(SCOPE.length).split(/[?#]/)[0];if(rel.startsWith('qa-models/'))return;
+ e.respondWith((async()=>{const c=await caches.open(CACHE),nav=e.request.mode==='navigate';let r=await c.match(nav&&(rel===''||rel==='index.html')?'./':e.request,{ignoreSearch:true});
+  if(!r){try{r=await fetch(e.request);if(r.ok&&(ASSETS.includes(rel)||rel.startsWith('runtime/')))await c.put(e.request,r.clone());}catch(error){if(nav)r=await c.match('./');if(!r)throw error;}}
+  return isolate(r);})());});
